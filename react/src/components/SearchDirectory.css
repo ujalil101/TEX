@@ -1,0 +1,61 @@
+.search-directory {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-input-container h3 {
+  margin: 0; 
+  flex-shrink: 0;
+}
+
+.search-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+  max-width: 600px; 
+  width: 500px;
+}
+
+.search-form button {
+  padding: 10px;
+  background-color: #f50002;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background-color: #af1214;
+}
+
+.employee-info {
+  flex-grow: 1; 
+}
+
+.employee-list {
+  margin-top: 20px;
+  overflow-y: auto;
+}
+
+.employee-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
