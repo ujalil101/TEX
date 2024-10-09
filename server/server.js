@@ -31,14 +31,37 @@ app.get('/', (req, res) => {
 });
 
 
+
 app.get('/employees', async (req, res) => {
-  try {
-    const employees = await db.collection(collectionName).find().toArray();
-    res.json(employees);
-  } catch (err) {
-    res.status(500).send(err);
-  }
+    const query = req.query.name;
+    try {
+      let employees;
+      if (query) {
+        employees = await db.collection(collectionName).find({ name: query }).toArray();
+      } else {
+        employees = await db.collection(collectionName).find().toArray();
+      }
+      res.json(employees);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const user = await db.collection(collectionName).findOne({ username, password });
+        if (user) {
+            res.status(200).json({ uid: user._id });
+        } else {
+            res.status(401).json({ message: 'Authentication failed' });
+        }
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Internal server error' });
+    }
 });
+  
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
