@@ -30,29 +30,31 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-
-
 app.get('/employees', async (req, res) => {
-    const query = req.query.name;
-    try {
-      let employees;
-      if (query) {
-        employees = await db.collection(collectionName).find({ name: query }).toArray();
-      } else {
-        employees = await db.collection(collectionName).find().toArray();
-      }
-      res.json(employees);
-    } catch (err) {
-      res.status(500).send(err);
+  const { name } = req.query;
+  try {
+    let employees;
+    if (name) {
+      employees = await db.collection(collectionName).find({
+        name: { $regex: `^${name}`, $options: 'i' }
+      }).toArray();
+    } else {
+      employees = [];
     }
-  });
+    res.json(employees);
+  } catch (error) {
+    console.error('Error fetching employees:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
     try {
         const user = await db.collection(collectionName).findOne({ username, password });
         if (user) {
-            res.status(200).json({ uid: user._id });
+            const { password, ...userWithoutPassword } = user;
+            res.status(200).json(userWithoutPassword);
         } else {
             res.status(401).json({ message: 'Authentication failed' });
         }
