@@ -17,7 +17,7 @@ const Home = () => {
           <PersonInfo personInfo={personInfo} />
         </div>
         <div className="right-container">
-          <SearchDirectory />
+          <SearchDirectory currentUser={personInfo} />
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import EmployeeCard from './EmployeeCard';
 import './SearchDirectory.css';
 
-const SearchDirectory = () => {
+const SearchDirectory = ({ currentUser }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [userInfo, setUserInfo] = useState([]);
   const [message, setMessage] = useState('');
@@ -31,6 +31,15 @@ const SearchDirectory = () => {
     }
   };
 
+  const canViewSalary = (employee) => {
+    return (
+      currentUser.role === 2 || // CEO
+      currentUser.role === 3 || // HR
+      (currentUser.role === 1 && employee.managerId === currentUser.name) || // Manager viewing their employees
+      (currentUser.role === 0 && currentUser.id === employee.id) // Employee viewing their own salary
+    );
+  };
+
   return (
     <div className="search-directory">
       <form className="search-form" onSubmit={handleSearch}>
@@ -52,7 +61,11 @@ const SearchDirectory = () => {
             <h3>Employee Information</h3>
             <div className="employee-cards-container">
               {userInfo.map((employee) => (
-                <EmployeeCard key={employee._id} employee={employee} />
+                <EmployeeCard
+                  key={employee._id}
+                  employee={employee}
+                  showSalary={canViewSalary(employee)}
+                />
               ))}
             </div>
           </div>
