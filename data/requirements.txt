@@ -1,1 +1,6 @@
 faker
+flask-cors
+flask
+pandas
+pickle
+scikit-learn

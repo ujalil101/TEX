@@ -1,15 +1,17 @@
 .search-directory {
-  display: flex;
-  flex-direction: column;
+  max-width: 100%;
+  margin: 20px auto; 
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .search-form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
-  background-color: #fff;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  align-items: center;
 }
 
 .search-input-container {
@@ -19,43 +21,54 @@
 }
 
 .search-input-container h3 {
-  margin: 0; 
-  flex-shrink: 0;
+  margin-right: 10px;
 }
 
-.search-form input {
+.search-input-container input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  flex-grow: 1;
-  max-width: 600px; 
-  width: 500px;
+  font-size: 16px;
+  width: 400px;
 }
 
-.search-form button {
+.search-input-container button {
   padding: 10px;
   background-color: #f50002;
-  color: #fff;
+  color: white;
   border: none;
   border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.search-form button:hover {
+.search-input-container button[type="button"] {
+  background-color: #f50002;
+}
+
+.search-input-container button:hover {
+  background-color: #af1214;
+}
+
+.search-input-container button[type="button"]:hover {
   background-color: #af1214;
 }
 
 .employee-info {
-  flex-grow: 1; 
+  margin-top: 20px;
+}
+
+.employee-info p {
+  text-align: center;
+  color: red;
 }
 
 .employee-list {
   margin-top: 20px;
-  overflow-y: auto;
 }
 
 .employee-cards-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
 }

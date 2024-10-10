@@ -31,6 +31,12 @@ const SearchDirectory = ({ currentUser }) => {
     }
   };
 
+  const handleClear = () => {
+    setSearchQuery('');
+    setUserInfo([]);
+    setMessage('');
+  };
+
   const canViewSalary = (employee) => {
     return (
       currentUser.role === 2 || 
@@ -52,6 +58,7 @@ const SearchDirectory = ({ currentUser }) => {
             required
           />
           <button type="submit">Search</button>
+          <button type="button" onClick={handleClear}>Clear</button>
         </div>
       </form>
       <div className="employee-info">

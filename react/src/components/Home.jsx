@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Welcome from './Welcome';
 import PersonInfo from './PersonInfo';
 import SearchDirectory from './SearchDirectory';
+import Prediction from './Prediction';
 import './Home.css';
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
         </div>
         <div className="right-container">
           <SearchDirectory currentUser={personInfo} />
+          <Prediction />
         </div>
       </div>
     </div>
