@@ -1,9 +1,9 @@
 import random
 import json
 from faker import Faker
-
+ 
 fake = Faker()
-
+ 
 roles_salaries_hartford = {
     "Operations Manager": (80000, 130000),
     "Administrative Assistant": (45000, 65000),
@@ -37,7 +37,7 @@ roles_salaries_hartford = {
     "Customer Service Representative": (40000, 60000),
     "Call Center Agent": (35000, 55000),
 }
-
+ 
 roles_salaries_atlanta = {
     "Operations Manager": (63000, 96000),
     "Administrative Assistant": (47000, 69000),
@@ -71,8 +71,8 @@ roles_salaries_atlanta = {
     "Customer Service Representative": (50000, 70000),
     "Call Center Agent": (45000, 60000),
 }
-
-
+ 
+ 
 roles_salaries_st_paul = {
     "Operations Manager": (85000, 125000),
     "Administrative Assistant": (47000, 69000),
@@ -106,7 +106,7 @@ roles_salaries_st_paul = {
     "Customer Service Representative": (45000, 65000),
     "Call Center Agent": (40000, 60000),
 }
-
+ 
 def generate_employee(employee_type, hello=None):
     if hello is None:
         hello = []
@@ -120,20 +120,18 @@ def generate_employee(employee_type, hello=None):
     u_name = f"{f_name[0]}{l_name}{r_num1}"
     p_word = f"{f_name[0]}{l_name}@{r_num2}"
     phone_number = fake.phone_number()
-    
     #Cleaning Phone number format
     phone_number = fake.phone_number()
     cleaned_phone_number = phone_number.split('x')[0].split('ext')[0].strip()
     if cleaned_phone_number.startswith('+1-'):
-        cleaned_phone_number = cleaned_phone_number[3:]  # Remove +1-
+        cleaned_phone_number = cleaned_phone_number[3:]  
     elif cleaned_phone_number.startswith('001-'):
-        cleaned_phone_number = cleaned_phone_number[4:]  # Remove 001-
+        cleaned_phone_number = cleaned_phone_number[4:]  
     cleaned_phone_number = ''.join(filter(str.isdigit, cleaned_phone_number))
     if len(cleaned_phone_number) == 10:
         formatted_phone_number = f"{cleaned_phone_number[:3]}-{cleaned_phone_number[3:6]}-{cleaned_phone_number[6:]}"
     else:
         formatted_phone_number = cleaned_phone_number
-        
     #Finding Location and salary
     location = random.choice(work_locations)
     hr_jobs = ["HR Generalist","Talent Acquisition Specialist","Compensation Analyst"]
@@ -148,7 +146,6 @@ def generate_employee(employee_type, hello=None):
         else:
             salary_range = roles_salaries_st_paul['Manager']
         salary = random.randint(salary_range[0], salary_range[1])
-        
     elif (employee_type == 'Employee'):
         manager_name = random.choice(hello)
         role_num = 0
@@ -162,7 +159,6 @@ def generate_employee(employee_type, hello=None):
         else:
             salary_range = roles_salaries_st_paul[job_role]
         salary = random.randint(salary_range[0], salary_range[1])
-        
     elif (employee_type == 'HR'):
         manager_name = random.choice(hello)
         role_num = 3
@@ -174,7 +170,6 @@ def generate_employee(employee_type, hello=None):
         else:
             salary_range = roles_salaries_st_paul[job_role]
         salary = random.randint(salary_range[0], salary_range[1])
-        
     e = {
         "name": name,
         "phoneNumber": formatted_phone_number,
@@ -187,14 +182,12 @@ def generate_employee(employee_type, hello=None):
         "username": u_name,
         "password": p_word
     }
-    
     return e
-
-
+ 
+ 
 def generate_db(employees_num, managers_num, hr_num):
     managers = []
     employees = []
-    
     ceo = {
         "name": "Alan Schnitzer",
         "phoneNumber": "123-456-7890",
@@ -207,7 +200,6 @@ def generate_db(employees_num, managers_num, hr_num):
         "password": "ASchnitzer@1"
     }
     employees.append(ceo)
-    
     #Adding Managers
     for i in range(managers_num):
         e = generate_employee('Manager')
@@ -221,15 +213,10 @@ def generate_db(employees_num, managers_num, hr_num):
     for i in range(hr_num):
         f = generate_employee('HR', managers)
         employees.append(f)
-        
     return employees
-     
-       
+
 if __name__ == "__main__":
-    json_documents = generate_db(100,15,10)
-    
+    json_documents = generate_db(5000,600,500)
     with open('employees.json', 'w') as file:
         json.dump(json_documents, file)
-            
-        
-                
+
