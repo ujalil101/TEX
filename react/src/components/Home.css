@@ -15,8 +15,8 @@
 .main-content {
   display: flex;
   gap: 20px;
-  flex: 1; /* Ensure main-content takes up the remaining space */
-  overflow: hidden; /* Prevent overflow */
+  flex: 1; 
+  overflow: hidden; 
 }
 
 .left-container, .right-container {

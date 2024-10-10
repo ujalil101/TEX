@@ -18,7 +18,6 @@ const PersonInfo = ({ personInfo }) => {
 
           if (response.ok) {
             const data = await response.json();
-            // Filter out the current person from the list
             const filteredData = data.filter(employee => employee._id !== personInfo._id);
             setSameRoleEmployees(filteredData);
           } else {
@@ -40,7 +39,7 @@ const PersonInfo = ({ personInfo }) => {
         <p><strong>Name:</strong> {personInfo?.name}</p>
         <p><strong>Role:</strong> {personInfo?.jobRole}</p>
         <p><strong>Location:</strong> {personInfo?.workLocation}</p>
-        <p><strong>Salary:</strong> {personInfo?.salary}</p>
+        <p><strong>Salary:</strong> ${personInfo?.salary.toLocaleString()}</p>
       </div>
       {sameRoleEmployees.length > 0 && (
         <div className="same-role-employees">
