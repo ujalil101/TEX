@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import EmployeeCard from './EmployeeCard';
 import './SearchDirectory.css';
 
-<<<<<<< HEAD
-const SearchDirectory = () => {
-=======
 const SearchDirectory = ({ currentUser }) => {
->>>>>>> a24732536ff951cf70added8449d744541b4bcc3
   const [searchQuery, setSearchQuery] = useState('');
   const [userInfo, setUserInfo] = useState([]);
   const [message, setMessage] = useState('');
@@ -35,18 +31,15 @@ const SearchDirectory = ({ currentUser }) => {
     }
   };
 
-<<<<<<< HEAD
-=======
   const canViewSalary = (employee) => {
     return (
-      currentUser.role === 2 || // CEO
-      currentUser.role === 3 || // HR
-      (currentUser.role === 1 && employee.managerId === currentUser.name) || // Manager viewing their employees
-      (currentUser.role === 0 && currentUser.id === employee.id) // Employee viewing their own salary
+      currentUser.role === 2 || 
+      currentUser.role === 3 || 
+      (currentUser.role === 1 && employee.managerId === currentUser.name) || 
+      (currentUser.role === 0 && currentUser.id === employee.id) 
     );
   };
 
->>>>>>> a24732536ff951cf70added8449d744541b4bcc3
   return (
     <div className="search-directory">
       <form className="search-form" onSubmit={handleSearch}>
@@ -68,15 +61,11 @@ const SearchDirectory = ({ currentUser }) => {
             <h3>Employee Information</h3>
             <div className="employee-cards-container">
               {userInfo.map((employee) => (
-<<<<<<< HEAD
-                <EmployeeCard key={employee._id} employee={employee} />
-=======
                 <EmployeeCard
                   key={employee._id}
                   employee={employee}
                   showSalary={canViewSalary(employee)}
                 />
->>>>>>> a24732536ff951cf70added8449d744541b4bcc3
               ))}
             </div>
           </div>
