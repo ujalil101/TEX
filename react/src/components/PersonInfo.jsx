@@ -38,6 +38,7 @@ const PersonInfo = ({ personInfo }) => {
       <div className="person-info-card">
         <p><strong>Name:</strong> {personInfo?.name}</p>
         <p><strong>Role:</strong> {personInfo?.jobRole}</p>
+        <p><strong>Phone Number:</strong> {personInfo?.phoneNumber}</p>
         <p><strong>Location:</strong> {personInfo?.workLocation}</p>
         <p><strong>Salary:</strong> ${personInfo?.salary.toLocaleString()}</p>
       </div>
