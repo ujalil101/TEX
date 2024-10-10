@@ -217,6 +217,7 @@ def generate_db(employees_num, managers_num, hr_num):
 
 if __name__ == "__main__":
     json_documents = generate_db(5000,600,500)
+    
     with open('employees.json', 'w') as file:
         json.dump(json_documents, file)
 

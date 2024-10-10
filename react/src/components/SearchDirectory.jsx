@@ -33,10 +33,10 @@ const SearchDirectory = ({ currentUser }) => {
 
   const canViewSalary = (employee) => {
     return (
-      currentUser.role === 2 || // CEO
-      currentUser.role === 3 || // HR
-      (currentUser.role === 1 && employee.managerId === currentUser.name) || // Manager viewing their employees
-      (currentUser.role === 0 && currentUser.id === employee.id) // Employee viewing their own salary
+      currentUser.role === 2 || 
+      currentUser.role === 3 || 
+      (currentUser.role === 1 && employee.managerId === currentUser.name) || 
+      (currentUser.role === 0 && currentUser.id === employee.id) 
     );
   };
 
