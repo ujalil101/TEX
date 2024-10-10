@@ -125,9 +125,9 @@ def generate_employee(employee_type, hello=None):
     phone_number = fake.phone_number()
     cleaned_phone_number = phone_number.split('x')[0].split('ext')[0].strip()
     if cleaned_phone_number.startswith('+1-'):
-        cleaned_phone_number = cleaned_phone_number[3:]  # Remove +1-
+        cleaned_phone_number = cleaned_phone_number[3:]  
     elif cleaned_phone_number.startswith('001-'):
-        cleaned_phone_number = cleaned_phone_number[4:]  # Remove 001-
+        cleaned_phone_number = cleaned_phone_number[4:]  
     cleaned_phone_number = ''.join(filter(str.isdigit, cleaned_phone_number))
     if len(cleaned_phone_number) == 10:
         formatted_phone_number = f"{cleaned_phone_number[:3]}-{cleaned_phone_number[3:6]}-{cleaned_phone_number[6:]}"
@@ -226,7 +226,7 @@ def generate_db(employees_num, managers_num, hr_num):
      
        
 if __name__ == "__main__":
-    json_documents = generate_db(100,15,10)
+    json_documents = generate_db(5000,600,500)
     
     with open('employees.json', 'w') as file:
         json.dump(json_documents, file)
