@@ -5,7 +5,7 @@ const Welcome = () => {
   return (
     <div className="welcome-container">
       <h3>Welcome to TEX</h3>
-      <h2>Travelers Explore EXplorer</h2>
+      <h2>Travelers Employee Xplorer</h2>
       <p>TEX offers Trav Employees  with the compalitiy to search the enterprise-wide employee directory! </p>
     </div>
   );

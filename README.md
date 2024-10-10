@@ -1,5 +1,5 @@
 # TEX
-Welcome to Traveler's Employee eXplorer. This is a MERN application that allows employees to search an enterprise-wide employee directory. It also allows employees to predict salary given job location and job role.
+Welcome to Traveler's Employee Xplorer. This is a MERN application that allows employees to search an enterprise-wide employee directory. It also allows employees to predict salary given job location and job role.
 
 ## Navigation 
 1. /data: Generates the data.
